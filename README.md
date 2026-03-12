@@ -1,76 +1,202 @@
 # Pregnancy Coach (Local RAG Chatbot)
 
-Privacy-first pregnancy coach that runs **fully locally** on your laptop. It answers questions about **workouts, meals, hydration, and vitamins** during pregnancy using a **retrieval-augmented generation (RAG)** pipeline over a curated knowledge base.
+A **privacy-first pregnancy coach** that runs completely **locally on your laptop**.
+The assistant answers questions about **workouts, nutrition, hydration, vitamins, and safety** during pregnancy using a **Retrieval-Augmented Generation (RAG)** pipeline over a curated knowledge base.
 
-> **Not medical advice.** Educational content only — always consult your obstetric provider.
-
----
-
-## Features
-
-- **End-to-end local stack**
-  - LLM via **Ollama** (`llama3.2:1b` by default; easy switch to `llama3:8b`)
-  - **Embeddings:** `nomic-embed-text`
-  - **Vector store:** **ChromaDB** (persisted on disk)
-- **Backend (FastAPI)**
-  - `/chat` endpoint with retrieval + clean, human-style answers (short paragraphs, bullets, light **bold**)
-  - `/healthz` health check
-  - Output polishing (real newlines; no code blocks/tables; no noisy object dumps)
-  - Profile-aware responses (trimester, weeks, activity level, diet, allergies, restrictions, conditions)
-- **Frontend (Next.js + Tailwind v3)**
-  - Chat UI with **profile sidebar**
-  - White theme with **baby-pink** accents; inputs are white with dark text
-  - Optional **background image only behind the chat panel**
-  - Markdown rendering via `react-markdown` + `remark-gfm`
-- **Knowledge Base**
-  - Curated `.md` files (workouts, strength, mobility, nutrition, vitamins, hydration, food safety, trimester tips, disclaimer)
-  - Simple indexer script to (re)embed into Chroma
+⚠️ **Not medical advice.** Educational content only. Always consult your obstetric provider.
 
 ---
 
-## Tech Stack
+# Features
 
-- **LLM & Embeddings:** Ollama (`llama3.2:1b`, `llama3:8b`), `nomic-embed-text`
-- **Vector DB:** ChromaDB
-- **Backend:** Python 3.10+, FastAPI, Uvicorn
-- **Frontend:** Next.js 14, React, Tailwind CSS v3, Framer Motion, Lucide Icons
-- **Markdown:** `react-markdown`, `remark-gfm`
+### Fully Local AI Stack
+
+* **LLM:** Ollama (`llama3.2:1b` default, optional `llama3:8b`)
+* **Embeddings:** `nomic-embed-text`
+* **Vector Database:** ChromaDB (local persistent storage)
+
+### Backend (FastAPI)
+
+* `/chat` endpoint for RAG-based responses
+* `/healthz` health check
+* Clean conversational output formatting
+* Profile-aware responses (trimester, activity level, diet, allergies, conditions)
+
+### Frontend (Next.js + Tailwind)
+
+* Interactive chat UI
+* Pregnancy profile sidebar
+* Soft **baby-pink themed design**
+* Markdown rendering (`react-markdown`, `remark-gfm`)
+* Framer Motion animations
+
+### Knowledge Base
+
+Curated pregnancy information stored as `.md` files:
+
+* workouts
+* strength training
+* yoga & mobility
+* nutrition
+* hydration
+* vitamins
+* trimester guidance
+* food safety
 
 ---
 
+# Tech Stack
 
+### AI / ML
 
-## Quickstart
-### 1) Ollama
+* Ollama (LLM inference)
+* ChromaDB (vector retrieval)
+* Local embeddings (`nomic-embed-text`)
+
+### Backend
+
+* Python 3.10+
+* FastAPI
+* Uvicorn
+
+### Frontend
+
+* Next.js 14
+* React
+* TailwindCSS v3
+* Framer Motion
+* Lucide Icons
+
+### Markdown Rendering
+
+* react-markdown
+* remark-gfm
+
+---
+
+# Project Architecture
+
+User Question
+↓
+Next.js Chat UI
+↓
+FastAPI Backend
+↓
+Intent + Safety Classifiers
+↓
+Chroma Vector Search
+↓
+Ollama LLM
+↓
+Final Response
+
+---
+
+# Quickstart
+
+## 1️⃣ Install Ollama
+
+Start Ollama:
+
 ```bash
 ollama serve
-ollama pull llama3.2:1b / ollama pull llama3:8b
+```
+
+Pull models:
+
+```bash
+ollama pull llama3.2:1b
 ollama pull nomic-embed-text
 ```
-### 2) Backend
+
+Optional larger model:
+
+```bash
+ollama pull llama3:8b
+```
+
+---
+
+# 2️⃣ Run Backend
+
 ```bash
 cd backend
-python -m venv .venv && source .venv/bin/activate
+
+python -m venv .venv
+source .venv/bin/activate
+
 pip install -r requirements.txt
+
 cp .env.example .env
-python -m scripts.index_kb     # builds vector store from backend/kb/*.md
-# embed the knowledge base (backend/kb/*.md)
-python -m scripts.index_kb
-
-# run API (port 8001)
-python -m uvicorn app:app --reload --port 8001
-
-# health (new terminal)
-curl http://127.0.0.1:8001/healthz
-# -> {"ok":true,"debug":true}
 ```
-### 3) Frontend
+
+Build the vector database:
+
 ```bash
-cd ../frontend
+python -m scripts.index_kb
+```
+
+Start the API:
+
+```bash
+python -m uvicorn app:app --reload --port 8001
+```
+
+Test health endpoint:
+
+```bash
+curl http://127.0.0.1:8001/healthz
+```
+
+Expected response:
+
+```json
+{"ok": true}
+```
+
+---
+
+# 3️⃣ Run Frontend
+
+```bash
+cd frontend
+
 npm install
-echo "NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8001" > .env.local
+
 cp .env.example .env.local
+```
+
+Add backend URL:
+
+```bash
+echo "NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8001" > .env.local
+```
+
+Start frontend:
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:3000
+Open the app:
+
+```
+http://localhost:3000
+```
+
+---
+
+# Example Questions
+
+* "What exercises are safe during the second trimester?"
+* "Give me a vegetarian pregnancy meal plan."
+* "How much water should I drink at 24 weeks?"
+* "What vitamins are recommended during pregnancy?"
+
+---
+
+# Safety Notice
+
+This application provides **educational information only** and **does not replace professional medical advice**.
+
+Always consult a **qualified healthcare provider** for medical guidance.
