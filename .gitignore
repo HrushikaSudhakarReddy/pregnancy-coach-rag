@@ -1,36 +1,54 @@
 # Python
-__pycache__/
+
+**pycache**/
 *.pyc
 *.pyo
+*.pyd
 
 # Virtual environments
+
 .venv/
 venv/
 backend/.venv/
 
 # Vector database
+
 .chroma/
 backend/.chroma/
 
 # Logs
+
 .logs/
 *.log
 
-# Environment files
+# Environment variables
+
 .env
 .env.*
+*.env
+*.env.local
 frontend/.env.local
 
-# Node
+# Node / Next.js
+
 node_modules/
 frontend/node_modules/
 .next/
 frontend/.next/
+dist/
+build/
 
 # OS
+
 .DS_Store
 Thumbs.db
 
 # Editors
+
 .vscode/
 .idea/
+
+# Python caches
+
+.pytest_cache/
+.mypy_cache/
