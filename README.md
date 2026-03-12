@@ -1,123 +1,108 @@
-# Pregnancy Coach (Local RAG Chatbot)
+# Pregnancy Coach — Local RAG AI Assistant
 
-A **privacy-first pregnancy coach** that runs completely **locally on your laptop**.
-The assistant answers questions about **workouts, nutrition, hydration, vitamins, and safety** during pregnancy using a **Retrieval-Augmented Generation (RAG)** pipeline over a curated knowledge base.
+A **privacy-first AI assistant** that answers pregnancy-related questions about **nutrition, exercise, hydration, and vitamins** using a **Retrieval-Augmented Generation (RAG)** pipeline over a curated knowledge base.
 
-⚠️ **Not medical advice.** Educational content only. Always consult your obstetric provider.
+The system runs **entirely locally**, combining **vector search, machine learning classifiers, and an LLM** to generate safe, structured responses.
+
+⚠️ This project is for **educational purposes only** and does not replace professional medical advice.
 
 ---
 
-# Features
+# Project Overview
 
-### Fully Local AI Stack
+This project demonstrates how to build an **end-to-end AI application** that combines:
 
-* **LLM:** Ollama (`llama3.2:1b` default, optional `llama3:8b`)
-* **Embeddings:** `nomic-embed-text`
-* **Vector Database:** ChromaDB (local persistent storage)
+• **Machine learning classifiers** (intent detection & safety filtering)
+• **Vector retrieval** using embeddings
+• **Large language model generation**
+• **FastAPI backend services**
+• **Interactive Next.js frontend**
 
-### Backend (FastAPI)
+The assistant retrieves relevant information from a curated knowledge base and generates contextual answers tailored to a user's pregnancy profile.
 
-* `/chat` endpoint for RAG-based responses
-* `/healthz` health check
-* Clean conversational output formatting
-* Profile-aware responses (trimester, activity level, diet, allergies, conditions)
+---
 
-### Frontend (Next.js + Tailwind)
+# System Architecture
 
-* Interactive chat UI
-* Pregnancy profile sidebar
-* Soft **baby-pink themed design**
-* Markdown rendering (`react-markdown`, `remark-gfm`)
-* Framer Motion animations
+User Query
+↓
+Next.js Chat Interface
+↓
+FastAPI API Layer
+↓
+Intent Classification + Safety Filtering
+↓
+Vector Retrieval (ChromaDB + embeddings)
+↓
+LLM Response Generation (Ollama)
+↓
+Structured Answer Returned to User
+
+---
+
+# Key Data Science Components
+
+### Intent Classification
+
+A lightweight ML classifier determines the **user’s query intent** (nutrition, exercise, safety, vitamins, etc.) to guide retrieval and response generation.
+
+### Safety Classification
+
+A safety model flags **potentially risky medical queries**, ensuring the assistant responds cautiously.
+
+### Retrieval-Augmented Generation (RAG)
+
+Relevant documents are retrieved from a **vector database (ChromaDB)** using embeddings before generating responses with the language model.
 
 ### Knowledge Base
 
-Curated pregnancy information stored as `.md` files:
+The RAG system uses a curated dataset of pregnancy guidance stored as structured Markdown files covering topics such as:
 
-* workouts
-* strength training
-* yoga & mobility
-* nutrition
-* hydration
-* vitamins
-* trimester guidance
-* food safety
+• nutrition
+• hydration
+• vitamins
+• exercise safety
+• trimester-specific guidance
 
 ---
 
-# Tech Stack
+# Technology Stack
 
-### AI / ML
+### AI / Data Science
 
 * Ollama (LLM inference)
-* ChromaDB (vector retrieval)
-* Local embeddings (`nomic-embed-text`)
+* ChromaDB (vector database)
+* nomic-embed-text (embeddings)
+* Python ML pipeline for intent and safety classification
 
 ### Backend
 
-* Python 3.10+
+* Python
 * FastAPI
 * Uvicorn
 
 ### Frontend
 
-* Next.js 14
+* Next.js
 * React
-* TailwindCSS v3
+* TailwindCSS
 * Framer Motion
-* Lucide Icons
-
-### Markdown Rendering
-
-* react-markdown
-* remark-gfm
 
 ---
 
-# Project Architecture
+# Running the Project
 
-User Question
-↓
-Next.js Chat UI
-↓
-FastAPI Backend
-↓
-Intent + Safety Classifiers
-↓
-Chroma Vector Search
-↓
-Ollama LLM
-↓
-Final Response
-
----
-
-# Quickstart
-
-## 1️⃣ Install Ollama
-
-Start Ollama:
+### 1. Start Ollama
 
 ```bash
 ollama serve
-```
-
-Pull models:
-
-```bash
 ollama pull llama3.2:1b
 ollama pull nomic-embed-text
 ```
 
-Optional larger model:
-
-```bash
-ollama pull llama3:8b
-```
-
 ---
 
-# 2️⃣ Run Backend
+### 2. Start Backend
 
 ```bash
 cd backend
@@ -127,58 +112,24 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
-cp .env.example .env
-```
-
-Build the vector database:
-
-```bash
 python -m scripts.index_kb
-```
-
-Start the API:
-
-```bash
 python -m uvicorn app:app --reload --port 8001
-```
-
-Test health endpoint:
-
-```bash
-curl http://127.0.0.1:8001/healthz
-```
-
-Expected response:
-
-```json
-{"ok": true}
 ```
 
 ---
 
-# 3️⃣ Run Frontend
+### 3. Start Frontend
 
 ```bash
 cd frontend
 
 npm install
-
-cp .env.example .env.local
-```
-
-Add backend URL:
-
-```bash
 echo "NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8001" > .env.local
-```
 
-Start frontend:
-
-```bash
 npm run dev
 ```
 
-Open the app:
+Open:
 
 ```
 http://localhost:3000
@@ -186,17 +137,28 @@ http://localhost:3000
 
 ---
 
-# Example Questions
+# Example Queries
 
-* "What exercises are safe during the second trimester?"
-* "Give me a vegetarian pregnancy meal plan."
-* "How much water should I drink at 24 weeks?"
-* "What vitamins are recommended during pregnancy?"
+• "What exercises are safe during the second trimester?"
+• "How much water should I drink at 24 weeks?"
+• "Give me a vegetarian pregnancy meal plan."
+• "What vitamins are recommended during pregnancy?"
 
 ---
 
-# Safety Notice
+# Example Interface
 
-This application provides **educational information only** and **does not replace professional medical advice**.
+Screenshots of the interface and model responses are shown below.
 
-Always consult a **qualified healthcare provider** for medical guidance.
+<!-- Add screenshots here -->
+
+---
+
+# Future Improvements
+
+• Larger LLM models for higher quality responses
+• Better evaluation metrics for retrieval accuracy
+• Expanded knowledge base
+• User personalization using long-term memory
+
+
