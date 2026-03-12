@@ -31,6 +31,7 @@ User Query
 Next.js Chat Interface
 
 ↓
+
 FastAPI API Layer
 
 ↓
