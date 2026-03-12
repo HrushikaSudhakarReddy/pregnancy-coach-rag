@@ -150,7 +150,11 @@ http://localhost:3000
 
 Screenshots of the interface and model responses are shown below.
 
-<!-- Add screenshots here -->
+### Chat Interface
+![Chat UI](screenshots/chat-ui.png)
+
+### Example AI Response
+![Response](screenshots/ai-response.png)
 
 ---
 
