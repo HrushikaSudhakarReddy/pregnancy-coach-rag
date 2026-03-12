@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+backend/.venv/
+
+# Vector database
+.chroma/
+backend/.chroma/
+
+# Logs
+.logs/
+*.log
+
+# Environment files
+.env
+.env.*
+frontend/.env.local
+
+# Node
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+{"query":"Is sushi safe while pregnant?","intent":"safety","gold_answer_substrings":["avoid raw fish","sushi with cooked fish is safer","mercury"],"profile":{"week":16}}
+{"query":"Breakfast ideas with protein in second trimester","intent":"meal","gold_answer_substrings":["eggs","Greek yogurt","peanut butter","protein"],"profile":{"week":20}}
+{"query":"Can I keep doing pilates at 20 weeks?","intent":"workout","gold_answer_substrings":["low-impact","modify","avoid supine","consult provider"],"profile":{"week":20}}
+{"query":"Do I need DHA supplements?","intent":"vitamins","gold_answer_substrings":["DHA","omega-3","recommended","200","300 mg"],"profile":{"week":22}}
+{"query":"What are Braxton Hicks?","intent":"general","gold_answer_substrings":["practice contractions","irregular","not labor"],"profile":{"week":28}}

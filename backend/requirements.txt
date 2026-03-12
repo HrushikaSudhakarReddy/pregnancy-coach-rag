@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+chromadb
+ollama
+numpy
+pandas
+scikit-learn
+joblib
+sentence-transformers
+matplotlib
+jsonlines

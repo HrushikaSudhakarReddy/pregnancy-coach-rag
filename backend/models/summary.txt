@@ -1,0 +1,2 @@
+macro_f1=1.000
+accuracy=1.000

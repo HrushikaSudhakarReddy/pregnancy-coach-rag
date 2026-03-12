@@ -1,0 +1,16 @@
+query,intent,k,retrieval_ms,answer_ms,recall_at_k,mrr,hallucination,used_reranker
+Is sushi safe while pregnant?,safety,3,183.28670799732208,,0.0,0.0,,False
+Is sushi safe while pregnant?,safety,5,183.28670799732208,,0.0,0.0,,False
+Is sushi safe while pregnant?,safety,10,183.28670799732208,,0.0,0.0,,False
+Breakfast ideas with protein in second trimester,meal,3,178.28933399915695,,0.0,0.0,,False
+Breakfast ideas with protein in second trimester,meal,5,178.28933399915695,,0.0,0.0,,False
+Breakfast ideas with protein in second trimester,meal,10,178.28933399915695,,0.0,0.0,,False
+Can I keep doing pilates at 20 weeks?,workout,3,212.29091700166464,,0.0,0.0,,False
+Can I keep doing pilates at 20 weeks?,workout,5,212.29091700166464,,0.0,0.0,,False
+Can I keep doing pilates at 20 weeks?,workout,10,212.29091700166464,,0.0,0.0,,False
+Do I need DHA supplements?,vitamins,3,160.60604099929333,,0.0,0.0,,False
+Do I need DHA supplements?,vitamins,5,160.60604099929333,,0.0,0.0,,False
+Do I need DHA supplements?,vitamins,10,160.60604099929333,,0.0,0.0,,False
+What are Braxton Hicks?,general,3,141.48370800167322,,0.0,0.0,,False
+What are Braxton Hicks?,general,5,141.48370800167322,,0.0,0.0,,False
+What are Braxton Hicks?,general,10,141.48370800167322,,0.0,0.0,,False
