@@ -25,17 +25,28 @@ The assistant retrieves relevant information from a curated knowledge base and g
 # System Architecture
 
 User Query
+
 ↓
+
 Next.js Chat Interface
+
 ↓
 FastAPI API Layer
+
 ↓
+
 Intent Classification + Safety Filtering
+
 ↓
+
 Vector Retrieval (ChromaDB + embeddings)
+
 ↓
+
 LLM Response Generation (Ollama)
+
 ↓
+
 Structured Answer Returned to User
 
 ---
@@ -158,11 +169,4 @@ Screenshots of the interface and model responses are shown below.
 
 ![Response](screenshots/ai-response.png)
 
----
 
-# Future Improvements
-
-* Larger LLM models for higher quality responses
-* Better evaluation metrics for retrieval accuracy
-* Expanded knowledge base
-* User personalization using long-term memory
