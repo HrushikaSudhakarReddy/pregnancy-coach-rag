@@ -12,11 +12,11 @@ The system runs **entirely locally**, combining **vector search, machine learnin
 
 This project demonstrates how to build an **end-to-end AI application** that combines:
 
-• **Machine learning classifiers** (intent detection & safety filtering)
-• **Vector retrieval** using embeddings
-• **Large language model generation**
-• **FastAPI backend services**
-• **Interactive Next.js frontend**
+* **Machine learning classifiers** (intent detection & safety filtering)
+* **Vector retrieval** using embeddings
+* **Large language model generation**
+* **FastAPI backend services**
+* **Interactive Next.js frontend**
 
 The assistant retrieves relevant information from a curated knowledge base and generates contextual answers tailored to a user's pregnancy profile.
 
@@ -58,11 +58,11 @@ Relevant documents are retrieved from a **vector database (ChromaDB)** using emb
 
 The RAG system uses a curated dataset of pregnancy guidance stored as structured Markdown files covering topics such as:
 
-• nutrition
-• hydration
-• vitamins
-• exercise safety
-• trimester-specific guidance
+* nutrition
+* hydration
+* vitamins
+* exercise safety
+* trimester-specific guidance
 
 ---
 
@@ -139,10 +139,10 @@ http://localhost:3000
 
 # Example Queries
 
-• "What exercises are safe during the second trimester?"
-• "How much water should I drink at 24 weeks?"
-• "Give me a vegetarian pregnancy meal plan."
-• "What vitamins are recommended during pregnancy?"
+* "What exercises are safe during the second trimester?"
+* "How much water should I drink at 24 weeks?"
+* "Give me a vegetarian pregnancy meal plan."
+* "What vitamins are recommended during pregnancy?"
 
 ---
 
@@ -151,18 +151,18 @@ http://localhost:3000
 Screenshots of the interface and model responses are shown below.
 
 ### Chat Interface
+
 ![Chat UI](screenshots/chat-ui.png)
 
 ### Example AI Response
+
 ![Response](screenshots/ai-response.png)
 
 ---
 
 # Future Improvements
 
-• Larger LLM models for higher quality responses
-• Better evaluation metrics for retrieval accuracy
-• Expanded knowledge base
-• User personalization using long-term memory
-
-
+* Larger LLM models for higher quality responses
+* Better evaluation metrics for retrieval accuracy
+* Expanded knowledge base
+* User personalization using long-term memory
