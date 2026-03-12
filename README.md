@@ -1,4 +1,4 @@
-# Pregnancy Coach — Local RAG AI Assistant
+# Pregnancy Coach: Local RAG AI Assistant
 
 A **privacy-first AI assistant** that answers pregnancy-related questions about **nutrition, exercise, hydration, and vitamins** using a **Retrieval-Augmented Generation (RAG)** pipeline over a curated knowledge base.
 
